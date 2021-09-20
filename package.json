@@ -1,0 +1,20 @@
+{
+  "name": "training",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MamadTaheri68/node-training.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MamadTaheri68/node-training/issues"
+  },
+  "homepage": "https://github.com/MamadTaheri68/node-training#readme",
+  "keywords": [],
+  "description": ""
+}
