@@ -17,7 +17,19 @@ const server = http.createServer((req, res) => {
         return res.end()
     }
     if(url === '/products' && method === 'POST') {
-        fs.writeFileSync('products.text', 'Product Name')
+        const items =[]
+        req.on('data', (data) => {
+             
+            items.push(data)
+        })
+        req.on('end', () => {
+            const parsedData = Buffer.concat(items).toString()
+            const product = parsedData.split('=')[1]
+            fs.writeFileSync('products.text', product)
+             
+        })
+
+
         res.statusCode = 302
         res.setHeader('Location', '/')
         return res.end()
