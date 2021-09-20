@@ -1,10 +1,11 @@
 const http = require('http');
-const { clearScreenDown } = require('readline');
+const fs = require('fs')
 
 const server = http.createServer((req, res) => {
     res.setHeader('Content-Type', 'text/html')
 
     const url = req.url
+    const method = req.method
 
     if(url === '/'){
         const form = `<form method="POST" action="/products">
@@ -13,6 +14,12 @@ const server = http.createServer((req, res) => {
                        </form>`
 
         res.write(form)
+        return res.end()
+    }
+    if(url === '/products' && method === 'POST') {
+        fs.writeFileSync('products.text', 'Product Name')
+        res.statusCode = 302
+        res.setHeader('Location', '/')
         return res.end()
     }
 
