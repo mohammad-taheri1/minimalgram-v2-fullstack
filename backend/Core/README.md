@@ -20,3 +20,8 @@
     * USER 1...N LIKE -> `userID`
     * POST 1...N LIKE -> `postID`
     * POST 1...N COMMENT -> `postID`
+
+
+## Swagger url
+
+    http://localhost:8000/swagger 
