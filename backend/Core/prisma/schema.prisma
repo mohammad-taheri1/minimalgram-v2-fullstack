@@ -9,3 +9,76 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+ model USER {
+    id          Int @id @default(autoincrement())
+    name        String
+    phone       String
+    email       String @unique
+    password    String
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+    UserType    UserType
+
+    posts       POST[]
+    likes       LIKE[]
+ }
+
+ model POST {
+    id          Int @id @default(autoincrement())
+    content     String
+    published   Boolean @default(true)
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    user_id     Int
+    user        USER @relation(fields: [user_id], references: [id])
+    likes       LIKE[]
+    comments    COMMENT[]
+    image_id    Int @unique
+    image       IMAGE @relation(fields: [image_id], references: [id])
+
+ }
+
+ model IMAGE {
+    id          Int @id @default(autoincrement())
+    url         String
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    post        POST?
+ }
+
+  model LIKE {
+     id          Int @id @default(autoincrement())
+     created_at  DateTime @default(now())
+     updated_at  DateTime @updatedAt
+
+     user_id   Int
+     user      USER @relation(fields: [user_id], references: [id])
+     post_id   Int
+     post      POST @relation(fields: [post_id], references: [id])
+  }
+
+ model COMMENT {
+    id          Int @id @default(autoincrement())
+    content     String
+    created_at  DateTime @default(now())
+    updated_at  DateTime @updatedAt
+
+    post_id     Int
+    post        POST @relation(fields: [post_id], references: [id])
+ }
+
+enum UserType {
+    ADMIN
+    USER
+}
+
+//  * One to One
+//    * POST 1...1 IMAGE -> implemented
+//  * One to Many
+//    * USER 1...N POST    -> `userID` -> implemented
+//    * USER 1...N LIKE    -> `userID` -> implemented
+//    * POST 1...N LIKE    -> `postID` -> implemented
+//    * POST 1...N COMMENT -> `postID` -> implemented
