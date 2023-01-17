@@ -18,7 +18,7 @@ datasource db {
     password    String
     created_at  DateTime @default(now())
     updated_at  DateTime @updatedAt
-    UserType    UserType
+    user_type   UserType
 
     posts       Post[]
     likes       Like[]

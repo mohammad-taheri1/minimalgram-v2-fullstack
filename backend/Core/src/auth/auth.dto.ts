@@ -1,4 +1,5 @@
 import { IsString, IsNotEmpty, IsEmail, MinLength, Matches } from "class-validator";
+import { ApiProperty } from "@nestjs/swagger";
 
 export class SignupDto {
 
@@ -6,13 +7,23 @@ export class SignupDto {
   @IsNotEmpty()
   name: string;
 
-  @Matches(/^[+]\d{7,15}$/, {message: "please enter a valid phone number, start with + sign"})
+  @ApiProperty({ default: "+989992228877" })
+  @Matches(/^[+]\d{7,15}$/, { message: "please enter a valid phone number, start with + sign" })
   phone: string;
 
-  @IsEmail({} , {message: "Email format is incorrect"})
+  @ApiProperty({ default: "name@tmail.com" })
+  @IsEmail({}, { message: "Email format is incorrect" })
   email: string;
 
   @IsString()
-  @MinLength(8)
+  @MinLength(5, { message: "Password length must be at least 5" })
   password: string;
+  // min length is considering ADMIN word
+}
+
+export interface ISignupParams {
+  name: string,
+  phone: string,
+  email: string,
+  password: string
 }
