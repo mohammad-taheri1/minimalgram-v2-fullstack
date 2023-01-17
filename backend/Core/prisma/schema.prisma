@@ -10,7 +10,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
- model USER {
+ model User {
     id          Int @id @default(autoincrement())
     name        String
     phone       String
@@ -20,11 +20,11 @@ datasource db {
     updated_at  DateTime @updatedAt
     UserType    UserType
 
-    posts       POST[]
-    likes       LIKE[]
+    posts       Post[]
+    likes       Like[]
  }
 
- model POST {
+ model Post {
     id          Int @id @default(autoincrement())
     content     String
     published   Boolean @default(true)
@@ -32,42 +32,42 @@ datasource db {
     updated_at  DateTime @updatedAt
 
     user_id     Int
-    user        USER @relation(fields: [user_id], references: [id])
-    likes       LIKE[]
-    comments    COMMENT[]
+    user        User @relation(fields: [user_id], references: [id])
+    likes       Like[]
+    comments    Comment[]
     image_id    Int @unique
-    image       IMAGE @relation(fields: [image_id], references: [id])
+    image       Image @relation(fields: [image_id], references: [id])
 
  }
 
- model IMAGE {
+ model Image {
     id          Int @id @default(autoincrement())
     url         String
     created_at  DateTime @default(now())
     updated_at  DateTime @updatedAt
 
-    post        POST?
+    post        Post?
  }
 
-  model LIKE {
+  model Like {
      id          Int @id @default(autoincrement())
      created_at  DateTime @default(now())
      updated_at  DateTime @updatedAt
 
      user_id   Int
-     user      USER @relation(fields: [user_id], references: [id])
+     user      User @relation(fields: [user_id], references: [id])
      post_id   Int
-     post      POST @relation(fields: [post_id], references: [id])
+     post      Post @relation(fields: [post_id], references: [id])
   }
 
- model COMMENT {
+ model Comment {
     id          Int @id @default(autoincrement())
     content     String
     created_at  DateTime @default(now())
     updated_at  DateTime @updatedAt
 
     post_id     Int
-    post        POST @relation(fields: [post_id], references: [id])
+    post        Post @relation(fields: [post_id], references: [id])
  }
 
 enum UserType {
