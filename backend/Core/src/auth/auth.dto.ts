@@ -2,7 +2,6 @@ import { IsString, IsNotEmpty, IsEmail, MinLength, Matches } from "class-validat
 import { ApiProperty } from "@nestjs/swagger";
 
 export class SignupDto {
-
   @IsString()
   @IsNotEmpty()
   name: string;
@@ -21,9 +20,24 @@ export class SignupDto {
   // min length is considering ADMIN word
 }
 
+export class SigninDto {
+  @ApiProperty({ default: "name@tmail.com" })
+  @IsEmail({}, { message: "Email format is incorrect" })
+  email: string;
+
+  @IsString()
+  @MinLength(5, { message: "Password length must be at least 5" })
+  password: string;
+}
+
 export interface ISignupParams {
   name: string,
   phone: string,
+  email: string,
+  password: string
+}
+
+export interface ISigninParams {
   email: string,
   password: string
 }

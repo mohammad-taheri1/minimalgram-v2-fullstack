@@ -12,6 +12,7 @@ async function bootstrap() {
     .setDescription("The Minimalgram Core micro-service API description")
     .setVersion("1.0")
     .addTag("routes", "all project api routes")
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup("swagger", app, document);
