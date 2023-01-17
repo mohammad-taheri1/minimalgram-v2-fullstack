@@ -6,7 +6,7 @@ export class SignupDto {
   @IsNotEmpty()
   name: string;
 
-  @Matches(/^[+]\d{7,15}/, {message: "please enter a valid phone number, start with + sign"})
+  @Matches(/^[+]\d{7,15}$/, {message: "please enter a valid phone number, start with + sign"})
   phone: string;
 
   @IsEmail({} , {message: "Email format is incorrect"})
