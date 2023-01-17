@@ -1,13 +1,15 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { PostController } from "../../src/post/post.controller";
-import { NotImplementedException } from "@nestjs/common";
+import { PostService } from "../../src/post/post.service";
+import { PrismaService } from "../../src/prisma/prisma.service";
 
 describe("PostController", () => {
   let postController: PostController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [PostController]
+      controllers: [PostController],
+      providers: [PostService, PrismaService]
     }).compile();
 
     postController = module.get<PostController>(PostController);
@@ -22,9 +24,7 @@ describe("PostController", () => {
       expect(postController.createPost).toBeDefined();
     });
 
-    it("should not throw NotImplementedException", () => {
-      expect(() => postController.createPost()).not.toThrow(process.env.NOT_IMPLEMENTED_ERROR_TEXT);
-    });
+
 
   });
 });

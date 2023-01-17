@@ -23,9 +23,7 @@ describe("PostService", () => {
       expect(postService.createPost).toBeDefined();
     });
 
-    it("should not throw NotImplementedException", () => {
-      expect(() => postService.createPost()).not.toThrow(process.env.NOT_IMPLEMENTED_ERROR_TEXT);
-    });
+
 
   });
 

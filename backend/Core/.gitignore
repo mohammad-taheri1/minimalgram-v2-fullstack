@@ -13,6 +13,7 @@ lerna-debug.log*
 
 # uploads
 /uploads
+/post_images
 
 # OS
 .DS_Store
