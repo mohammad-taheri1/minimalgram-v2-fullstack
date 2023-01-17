@@ -14,9 +14,14 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('rootResponse function', () => {
+    it("should be defined", () => {
+      expect(appController.rootResponse).toBeDefined();
+    })
+
+
+    it('should return "Core Service is up"', () => {
+      expect(appController.rootResponse()).toBe( `Core Service is up`);
     });
   });
 });

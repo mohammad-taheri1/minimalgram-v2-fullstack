@@ -1,18 +1,32 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AuthService } from '../../src/auth/auth.service';
+import { Test, TestingModule } from "@nestjs/testing";
+import { AuthService } from "../../src/auth/auth.service";
+import { PrismaService } from "../../src/prisma/prisma.service";
 
-describe('AuthService', () => {
-  let service: AuthService;
+describe("AuthService", () => {
+  let authService: AuthService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [AuthService],
+      providers: [AuthService, PrismaService]
     }).compile();
 
-    service = module.get<AuthService>(AuthService);
+    authService = module.get<AuthService>(AuthService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it("should be defined", () => {
+    expect(authService).toBeDefined();
   });
+
+  describe("signup", () => {
+    it("should be defined", () => {
+      expect(authService.signup).toBeDefined();
+    });
+  });
+
+  describe("signin", () => {
+    it("should be defined", () => {
+      expect(authService.signin).toBeDefined();
+    });
+  });
+
 });
