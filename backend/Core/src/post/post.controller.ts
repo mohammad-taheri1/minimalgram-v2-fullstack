@@ -1,7 +1,7 @@
 import {
   BadRequestException,
   Body,
-  Controller,
+  Controller, Get,
   NotImplementedException,
   Post,
   UploadedFile,
@@ -10,6 +10,7 @@ import {
 import { FileInterceptor } from "@nestjs/platform-express";
 import { PostService } from "./post.service";
 import { diskStorage } from "multer";
+
 const path = require("path");
 import { ApiTags } from "@nestjs/swagger";
 import { CreatePostDto } from "./post.dto";
@@ -43,9 +44,13 @@ export class PostController {
       }
     })
   )
-
-  createPost(@Body() caption: CreatePostDto, @UploadedFile() image: Express.Multer.File) {
+  async createPost(@Body() caption: CreatePostDto, @UploadedFile() image: Express.Multer.File) {
     return this.postService.createPost(caption, image);
+  }
+
+  @Get()
+  async getAllPosts() {
+    return this.postService.getAllPosts();
   }
 
 

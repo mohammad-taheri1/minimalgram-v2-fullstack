@@ -8,6 +8,11 @@ export class PostService {
   constructor(private readonly prismaService: PrismaService) {
   }
 
+  private urlCreator(imgName: string): string {
+    const baseUrl = process.env.APP_URL;
+    return `${baseUrl}/post_images/${imgName}`;
+  }
+
   async createPost(body: CreatePostDto, file: Express.Multer.File) {
     const { caption } = body;
     const savedImage = await this.prismaService.image.create({
@@ -25,5 +30,29 @@ export class PostService {
     });
   }
 
+  async getAllPosts() {
+    const posts = await this.prismaService.post.findMany({
+      select: {
+        id: true,
+        caption: true,
+        image: {
+          select: {
+            url: true
+          }
+        },
+        created_at: true
+      }
+    });
+
+    return posts.map(post => {
+      return {
+        id: post.id,
+        caption: post.caption,
+        image: this.urlCreator(post.image?.url),
+        created_at: post.created_at
+      };
+    });
+
+  }
 
 }

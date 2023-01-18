@@ -1,4 +1,4 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, Param, Res } from "@nestjs/common";
 import { AppService } from "./app.service";
 import { ApiTags } from "@nestjs/swagger";
 import { PrismaService } from "./prisma/prisma.service";
@@ -24,4 +24,10 @@ export class AppController {
       ]
     });
   }
+
+  @Get("/post_images/:name")
+  showFileTemporaryImplemented(@Param("name") name: string, @Res() res) {
+    return res.sendFile(name, { root: "./post_images" });
+  }
+
 }

@@ -23,8 +23,12 @@ describe("PostService", () => {
       expect(postService.createPost).toBeDefined();
     });
 
+  });
 
-
+  describe("getAllPosts", () => {
+    it("should be defined", () => {
+      expect(postService.getAllPosts).toBeDefined();
+    });
   });
 
 });

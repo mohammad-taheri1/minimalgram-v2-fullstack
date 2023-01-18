@@ -49,11 +49,11 @@ export class UploadController {
     return image.filename;
   }
 
-  @Get("/image/:name")
-  showFile(@Param("name") name: string, @Res() res) {
-    console.log(name);
-    return res.sendFile(name, { root: "./uploads" });
-  }
+  // @Get("/post_images/:name")
+  // showFile(@Param("name") name: string, @Res() res) {
+  //   console.log(name);
+  //   return res.sendFile(name, { root: "./post_images" });
+  // }
 
 
 }

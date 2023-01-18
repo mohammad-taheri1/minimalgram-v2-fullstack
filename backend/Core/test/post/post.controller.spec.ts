@@ -23,8 +23,12 @@ describe("PostController", () => {
     it("should be defined", () => {
       expect(postController.createPost).toBeDefined();
     });
-
-
-
   });
+
+  describe("getAllPosts", () => {
+    it("should be defined", () => {
+      expect(postController.getAllPosts).toBeDefined();
+    });
+  });
+
 });
