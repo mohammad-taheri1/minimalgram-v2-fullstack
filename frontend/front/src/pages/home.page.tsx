@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import {IPostDto} from "../types/post.types";
 import config from "../utils/config.json";
-import httpClient from "../services/http.service";
+import httpClient from "../core/http.service";
 import {ToastContainer} from "react-toastify";
 import {Box} from "@mui/material";
-import PostCardComponent from "../components/home/post-card.component";
 import PostsComponent from "../components/home/posts.component";
 
 const HomePage = () => {
