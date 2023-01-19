@@ -41,7 +41,10 @@ export class PostService {
           }
         },
         created_at: true
-      }
+      },
+      orderBy: [
+        { created_at: "desc" }
+      ]
     });
 
     return posts.map(post => {
