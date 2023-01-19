@@ -20,7 +20,7 @@ export class SignupDto {
   // min length is considering ADMIN word
 }
 
-export class SigninDto {
+export class LoginDto {
   @ApiProperty({ default: "name@tmail.com" })
   @IsEmail({}, { message: "Email format is incorrect" })
   email: string;
@@ -37,7 +37,7 @@ export interface ISignupParams {
   password: string
 }
 
-export interface ISigninParams {
+export interface ILoginParams {
   email: string,
   password: string
 }

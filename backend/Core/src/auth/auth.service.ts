@@ -1,5 +1,5 @@
 import { ConflictException, HttpException, Injectable } from "@nestjs/common";
-import { ISigninParams, ISignupParams } from "./auth.dto";
+import { ILoginParams, ISignupParams } from "./auth.dto";
 import { PrismaService } from "../prisma/prisma.service";
 import { UserType } from "@prisma/client";
 import * as bcrypt from "bcrypt";
@@ -34,7 +34,7 @@ export class AuthService {
     return "user created successfully";
   }
 
-  async signin(body: ISigninParams) {
+  async login(body: ILoginParams) {
     const { email, password } = body;
     const user = await this.prismaService.user.findUnique({
       where: {

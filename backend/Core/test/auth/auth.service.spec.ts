@@ -23,9 +23,9 @@ describe("AuthService", () => {
     });
   });
 
-  describe("signin", () => {
+  describe("login", () => {
     it("should be defined", () => {
-      expect(authService.signin).toBeDefined();
+      expect(authService.login).toBeDefined();
     });
   });
 

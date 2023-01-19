@@ -25,9 +25,9 @@ describe("AuthController", () => {
     });
   });
 
-  describe("signin", () => {
+  describe("login", () => {
     it("should be defined", () => {
-      expect(authcontroller.signin).toBeDefined();
+      expect(authcontroller.login).toBeDefined();
     });
   });
 });
