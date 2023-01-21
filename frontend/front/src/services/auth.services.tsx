@@ -4,6 +4,13 @@ import config from "../utils/config.json";
 import jwtDecode from "jwt-decode";
 
 const {apiBaseUrl} = config;
+const tokenKey = "token";
+
+const getJwt = () => {
+  return localStorage.getItem(tokenKey)
+}
+
+httpClient.setAuthorizationHeader(getJwt() || '');
 
 const signup = async (data: ISignupDto) => {
   const signupUrl = `${apiBaseUrl}/auth/signup`;
@@ -16,16 +23,17 @@ const login = async (data: ILoginDto) => {
 }
 
 const saveJwtToLocalStorage = (token: string) => {
-  localStorage.setItem('token', token);
+  localStorage.setItem(tokenKey, token);
 }
 
 const logout = (): void => {
-  localStorage.removeItem('token');
+  localStorage.removeItem(tokenKey);
 }
 
-const getCurrentUser = () : IJwt | undefined=> {
+
+const getCurrentUser = (): IJwt | undefined => {
   try {
-    const token = localStorage.getItem('token') || ''
+    const token = getJwt() || ''
     return jwtDecode(token);
   } catch (e) {
     return undefined;
@@ -37,6 +45,7 @@ const authService = {
   login,
   saveJwtToLocalStorage,
   logout,
+  getJwt,
   getCurrentUser
 }
 
