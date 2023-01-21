@@ -4,7 +4,7 @@ import {SignupValidationSchema, TSignupSubmitForm} from "./signup.schema";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Box, Button, TextField} from "@mui/material";
 import {PersonAddAlt, RestartAlt} from "@mui/icons-material";
-import {signup} from "../../services/auth.services";
+import authServices from "../../services/auth.services";
 import {ISignupDto} from "../../types/auth.types";
 import {toast, ToastContainer} from "react-toastify";
 import {useNavigate} from "react-router-dom";
@@ -31,7 +31,7 @@ const SignupComponent = () => {
       phone: data.phone,
       password: data.password
     }
-    const signUpResult = signup(signupData);
+    const signUpResult = authServices.signup(signupData);
     signUpResult
       .then(() => {
         toast.success("Your account created successfully. You will redirect automatically to login page");

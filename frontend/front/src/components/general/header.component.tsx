@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {useState} from "react";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -12,17 +12,25 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import {useNavigate} from "react-router-dom"
-import {Send} from "@mui/icons-material"
+import {IJwt} from "../../types/auth.types";
+import {ToastContainer} from "react-toastify";
 
 const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const userRoutes = [
+  {title: "Dashboard", url: "dashboard"},
+  {title: "Profile", url: "profile"},
+  {title: "Logout", url: "logout"},
+]
 
-function HeaderComponent() {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
+interface IHeaderComponentProps {
+  user?: IJwt
+}
+
+const HeaderComponent = ({user}: IHeaderComponentProps) => {
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
   const redirect = useNavigate();
-
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -118,42 +126,71 @@ function HeaderComponent() {
 
           </Box>
           <Box sx={{flexGrow: 0, display: "flex"}}>
-            <Button variant="contained" sx={{mx: 1,my: 2, color: 'white'}} onClick={() => redirect("login")}>
-              log in
-            </Button>
-            <Button variant="contained" sx={{mx: 1,my: 2, color: 'white'}} onClick={() => redirect("signup")}>
-              sign up
-            </Button>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{mt: '45px'}}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
+            {
+              !user && (
+                <>
+                  <Button variant="contained" sx={{mx: 1, my: 2, color: 'white'}} onClick={() => redirect("login")}>
+                    log in
+                  </Button>
+                  <Button variant="contained" sx={{mx: 1, my: 2, color: 'white'}} onClick={() => redirect("signup")}>
+                    sign up
+                  </Button>
+                </>
+              )
+            }
+            {
+              user && (<>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    component="h5"
+                    sx={{
+                      mr: 2,
+                      display: {xs: 'none', md: 'flex'},
+                      fontFamily: 'monospace',
+                      color: 'inherit',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {user.name}
+                  </Typography>
+                  <Tooltip title="User settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{p: 0}}>
+                      <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{mt: '45px'}}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}
+                  >
+                    {userRoutes.map((route) => (
+                      <MenuItem key={route.url} onClick={() => {
+                        redirect(route.url);
+                        setAnchorElUser(null);
+                      }}>
+                        <Typography textAlign="center">{route.title}</Typography>
+                      </MenuItem>
+                    ))}
+                  </Menu>
+                </>
+              )
+            }
           </Box>
         </Toolbar>
       </Container>
+      <ToastContainer/>
     </AppBar>
   );
 }

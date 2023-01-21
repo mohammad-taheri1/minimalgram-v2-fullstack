@@ -4,7 +4,7 @@ import {LoginValidationSchema, TLoginSubmitForm} from "./login.schema";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {Box, Button, TextField} from "@mui/material";
 import {Login, RestartAlt} from "@mui/icons-material";
-import {login, saveJWTtoLocalStorage} from "../../services/auth.services";
+import authServices from "../../services/auth.services";
 import {ILoginDto} from "../../types/auth.types";
 import {toast, ToastContainer} from "react-toastify";
 import {useNavigate} from "react-router-dom";
@@ -29,12 +29,13 @@ const LoginComponent = () => {
       email: data.email,
       password: data.password
     }
-    const loginResult = login(loginData);
+    const loginResult = authServices.login(loginData);
     loginResult
       .then((response: AxiosResponse<string>) => {
         const {data: jwt} = response;
-        saveJWTtoLocalStorage(jwt);
-        redirect("/")
+        authServices.saveJwtToLocalStorage(jwt);
+        // redirect("/")
+        window.location.href= '/';
       })
       .catch((error: AxiosCustomError<TLoginError>) => {
         toast.error(error.response.data?.message)
