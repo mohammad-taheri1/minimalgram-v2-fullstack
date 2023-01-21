@@ -9,3 +9,7 @@ export interface AxiosCustomError<T> {
 export type TSignupError = {
   message: string
 }
+
+export type TLoginError = {
+  message: string
+}
