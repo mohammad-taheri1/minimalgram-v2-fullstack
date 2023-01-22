@@ -1,4 +1,4 @@
-# Minimalgram V2r
+# Minimalgram V2.0
 ![GitHub last commit](https://img.shields.io/github/last-commit/MamadTaheri/minimalgram-v2-fullstack)
 ![GitHub Repo stars](https://img.shields.io/github/stars/MamadTaheri/minimalgram-v2-fullstack?style=social)
 
@@ -17,7 +17,7 @@ Hello. This is an open-source project. This projects is consisted of :
 * Media Management : CRUD user posts with an image && a caption
 * Swagger
 * Error handling
-* CORS handlings
+* CORS handling
 
 ## What you can do in this project ?
 
