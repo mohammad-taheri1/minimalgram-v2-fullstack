@@ -5,58 +5,59 @@
 
 Hello. This is an open-source project. This projects is consisted of :
 
-* Nest.js
-* React
-* PostgreSQL
-* Prisma
+- Nest.js
+- React
+- PostgreSQL
+- Prisma
 
 ## Some key feautures in this project :
 
-* Authentication && Authorization && JWT
-* Database management && CRUD && ORM
-* RESTful APIs
-* Media Management : CRUD user posts with an image && a caption
-* Swagger
-* Error handling
-* CORS handling
+- Authentication && Authorization && JWT
+- Database management && CRUD && ORM
+- RESTful APIs
+- Media Management : CRUD user posts with an image && a caption
+- Swagger
+- Error handling
+- CORS handling
 
 ## What you can do in this project ?
 
 As a normal user:
 
-* [] see first page 
-* [] see users profile 
-* [*] search posts
+- [ ] see first page
+- [ ] see users profile
+- [*] search posts
 
-As a registered user: 
+As a registered user:
 
-* [] publish a post
-* [] temporarily/permanently unpublish a post `changePublishStatus Fn`
+- [ ] publish a post
+- [] temporarily/permanently unpublish a post `changePublishStatus Fn`
 
 As an Admin
 
-* [] get overall reports of application
-* [] active/deactive a user
-* [] activate/deactivate a post
+- [] get overall reports of application
+- [] active/deactive a user
+- [] activate/deactivate a post
 
-* On progress....
-
+-  On progress....
 
 ## Project Structure :
 
 ### Backend (API-based Microservice)
 
- The backend of this project is consisted of micro-services.
+The backend of this project is consisted of micro-services.
 
-| # | Name   | Framework | DB         | ORM      | Broker  |
-|---|--------|-----------|------------|----------|---------|
-| 1 | Core   | NestJs    | PostgreSQL | Prisma   | RabitMQ |
-| 2 | Logger | NestJs    | MongoDB    | Mongoose | RabitMQ |
+| #   | Name   | Framework | DB         | ORM      | Broker  |
+| --- | ------ | --------- | ---------- | -------- | ------- |
+| 1   | Core   | NestJs    | PostgreSQL | Prisma   | RabitMQ |
+| 2   | Logger | NestJs    | MongoDB    | Mongoose | RabitMQ |
 
 ## key feautures in more details:
 
-[x] protecting `main` branch
-[x] guest can see all public posts
-[x] guest can signup
-[x] guest can login
-[] user can  create a post
+- [x] protecting `main` branch
+- [x] guest can see all public posts
+- [x] guest can see all users profiles
+- [x] guest can signup
+- [x] guest can login
+- [] user can see additional infos on his/her profile
+- [] user can create a post
