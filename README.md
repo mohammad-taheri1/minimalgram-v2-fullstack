@@ -1,4 +1,4 @@
-# Minimalgram V2.0
+# Minimalgram V2.0f
 ![GitHub last commit](https://img.shields.io/github/last-commit/MamadTaheri/minimalgram-v2-fullstack)
 ![GitHub Repo stars](https://img.shields.io/github/stars/MamadTaheri/minimalgram-v2-fullstack?style=social)
 
