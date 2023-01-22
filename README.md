@@ -1,4 +1,6 @@
-# Minimalgram V2
+# Minimalgram V2r
+![GitHub last commit](https://img.shields.io/github/last-commit/MamadTaheri/minimalgram-v2-fullstack)
+![GitHub Repo stars](https://img.shields.io/github/stars/MamadTaheri/minimalgram-v2-fullstack?style=social)
 
 Hello. This is an open-source project. This projects is consisted of :
 
@@ -7,7 +9,7 @@ Hello. This is an open-source project. This projects is consisted of :
 * PostgreSQL
 * Prisma
 
-Some key feautures in this project :
+## Some key feautures in this project :
 
 * Authentication && Authorization && JWT
 * Database management && CRUD && ORM
@@ -21,16 +23,20 @@ Some key feautures in this project :
 
 As a normal user:
 
-* see first page 
-* see users profile 
-* search posts
+* [] see first page 
+* [] see users profile 
+* [*] search posts
 
 As a registered user: 
 
-* publish a post
-* temporarily/permanently unpublish a post `changePublishStatus Fn`
+* [] publish a post
+* [] temporarily/permanently unpublish a post `changePublishStatus Fn`
 
 As an Admin
+
+* [] get overall reports of application
+* [] active/deactive a user
+* [] activate/deactivate a post
 
 * On progress....
 
