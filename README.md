@@ -15,7 +15,7 @@ Some key feautures in this project :
 * Media Management : CRUD user posts with an image && a caption
 * Swagger
 * Error handling
-* CORS handling
+* CORS handlings
 
 ## What you can do in this project ?
 
