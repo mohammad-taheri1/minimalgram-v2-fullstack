@@ -1,4 +1,5 @@
-# Minimalgram V2.0f
+# Minimalgram V2.0.0
+
 ![GitHub last commit](https://img.shields.io/github/last-commit/MamadTaheri/minimalgram-v2-fullstack)
 ![GitHub Repo stars](https://img.shields.io/github/stars/MamadTaheri/minimalgram-v2-fullstack?style=social)
 
@@ -51,3 +52,11 @@ As an Admin
 |---|--------|-----------|------------|----------|---------|
 | 1 | Core   | NestJs    | PostgreSQL | Prisma   | RabitMQ |
 | 2 | Logger | NestJs    | MongoDB    | Mongoose | RabitMQ |
+
+## key feautures in more details:
+
+[x] protecting `main` branch
+[x] guest can see all public posts
+[x] guest can signup
+[x] guest can login
+[] user can  create a post
