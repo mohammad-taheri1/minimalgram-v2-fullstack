@@ -22,18 +22,18 @@ Hello. This is an open-source project. This projects is consisted of :
 
 ## What you can do in this project ?
 
-As a normal user:
+As a `normal` user:
 
 - [x] see all posts on first page
 - [ ] search posts by category
 - [ ] see users profile
 
-As a registered user:
+As a `registered` user:
 
 - [ ] publish a post
 - [ ] temporarily/permanently unpublish a post `changePublishStatus Fn`
 
-As an Admin
+As an `Admin`
 
 - [ ] get overall reports of application
 - [ ] create a new category
