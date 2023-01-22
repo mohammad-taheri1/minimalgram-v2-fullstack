@@ -1,8 +1,8 @@
 {
   "name": "core",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.0.0",
+  "description": "A fullstack social media app using NestJS, ReactJs, TypeScript, PostgreSQL and Prisam",
+  "author": "Mohammad Taheri",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -19,8 +19,8 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "prisma:db:push": "npx prisma db push",
-    "prisma:studio": "npx prisma studio"
+    "prisma_db_push": "npx prisma db push",
+    "prisma_studio": "npx prisma studio"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
