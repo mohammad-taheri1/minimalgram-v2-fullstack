@@ -26,18 +26,20 @@ As a normal user:
 
 - [ ] see first page
 - [ ] see users profile
-- [*] search posts
+- [x] see all posts
+- [x] search posts by category
 
 As a registered user:
 
 - [ ] publish a post
-- [] temporarily/permanently unpublish a post `changePublishStatus Fn`
+- [ ] temporarily/permanently unpublish a post `changePublishStatus Fn`
 
 As an Admin
 
-- [] get overall reports of application
-- [] active/deactive a user
-- [] activate/deactivate a post
+- [ ] get overall reports of application
+- [ ] create a new category
+- [ ] active/deactive a user
+- [ ] activate/deactivate a post
 
 -  On progress....
 
@@ -56,8 +58,9 @@ The backend of this project is consisted of micro-services.
 
 - [x] protecting `main` branch
 - [x] guest can see all public posts
+- [] guest can searh for a category and see it's posts
 - [x] guest can see all users profiles
 - [x] guest can signup
 - [x] guest can login
-- [] user can see additional infos on his/her profile
-- [] user can create a post
+- [ ] user can see additional infos on his/her profile
+- [ ] user can create a post
