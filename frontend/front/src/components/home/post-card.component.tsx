@@ -28,8 +28,8 @@ const PostCardComponent = ({post}: IPostCardComponentProps) => {
     <Card sx={{width: 300, height: 500, m: 2}}>
       <CardHeader
         avatar={
-          <Avatar sx={{bgcolor: red[500]}} aria-label="recipe">
-            R
+          <Avatar sx={{backgroundColor: red[500]}} aria-label="recipe">
+            {post.user.substring(0,1).toUpperCase()}
           </Avatar>
         }
         action={
@@ -37,7 +37,7 @@ const PostCardComponent = ({post}: IPostCardComponentProps) => {
             <MoreVert/>
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
+        title={post.user}
         subheader={postDate}
       />
       <Divider sx={{background: "gray"}}/>
