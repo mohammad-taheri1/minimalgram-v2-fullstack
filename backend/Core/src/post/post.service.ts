@@ -1,6 +1,7 @@
-import { Injectable } from "@nestjs/common";
+import {BadRequestException, HttpException, Injectable} from "@nestjs/common";
 import { PrismaService } from "../prisma/prisma.service";
 import { CreatePostDto } from "./post.dto";
+import {UserInfo} from "../auth/auth.dto";
 
 @Injectable()
 export class PostService {
@@ -13,7 +14,8 @@ export class PostService {
     return `${baseUrl}/post_images/${imgName}`;
   }
 
-  async createPost(body: CreatePostDto, file: Express.Multer.File) {
+  async createPost(body: CreatePostDto, file: Express.Multer.File, user: UserInfo) {
+
     const { caption } = body;
     const savedImage = await this.prismaService.image.create({
       data: {
@@ -25,7 +27,7 @@ export class PostService {
       data: {
         caption,
         image_id: savedImage.id,
-        user_id: 4
+        user_id: user.id
       }
     });
   }
@@ -40,6 +42,11 @@ export class PostService {
             url: true
           }
         },
+        user: {
+          select: {
+            name: true
+          }
+        },
         created_at: true
       },
       orderBy: [
@@ -52,6 +59,7 @@ export class PostService {
         id: post.id,
         caption: post.caption,
         image: this.urlCreator(post.image?.url),
+        user: post.user.name,
         created_at: post.created_at
       };
     });
