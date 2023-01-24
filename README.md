@@ -54,12 +54,14 @@ The backend of this project is consisted of micro-services.
 
 ## key feautures in more details:
 
-- [x] protecting `main` branch
-- [x] guest can see all public posts on first page
-- [ ] guest can searh for a category and see it's posts
-- [ ] guest can see all users profiles
-- [x] guest can signup
-- [x] user can login
-- [x] user can logout
-- [ ] user can see additional infos on his/her profile
-- [ ] user can create a post
+* brach `main` is locked. so it only accepts pull request
+* Guset can see public posts withouth any authentication
+* Guest can see user profile with user's posts and public informations
+* UserType can be ADMIN or USER
+* Guest can signup
+* User can login and logout
+* User can see him/her profile with it's private informations
+* User can create new post
+* User can edit and delete only his/her posts (check by userID)
+* Admin can create categories
+* Admin can switch user isActive field between true and false in any time
