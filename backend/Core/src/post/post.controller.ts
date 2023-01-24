@@ -4,18 +4,20 @@ import {
   Controller, Get, HttpException,
   NotImplementedException,
   Post,
-  UploadedFile,
+  UploadedFile, UseGuards,
   UseInterceptors
 } from "@nestjs/common";
-import { FileInterceptor } from "@nestjs/platform-express";
-import { PostService } from "./post.service";
-import { diskStorage } from "multer";
+import {FileInterceptor} from "@nestjs/platform-express";
+import {PostService} from "./post.service";
+import {diskStorage} from "multer";
 
 const path = require("path");
-import { ApiTags } from "@nestjs/swagger";
-import { CreatePostDto } from "./post.dto";
+import {ApiTags} from "@nestjs/swagger";
+import {CreatePostDto} from "./post.dto";
 import {User} from "../decorators/user.decorator";
 import {UserInfo} from "../auth/auth.dto";
+import {UserType} from "@prisma/client";
+import {Roles} from "../decorators/roles.decorator";
 
 @ApiTags("post")
 @Controller("post")
@@ -23,6 +25,7 @@ export class PostController {
   constructor(private readonly postService: PostService) {
   }
 
+  @Roles(UserType.USER)
   @Post()
   @UseInterceptors(
     FileInterceptor("image", {
@@ -47,7 +50,7 @@ export class PostController {
     })
   )
   async createPost(@Body() caption: CreatePostDto, @UploadedFile() image: Express.Multer.File, @User() user: UserInfo) {
-    if(!image) {
+    if (!image) {
       throw new BadRequestException("image must be sent");
     }
 
