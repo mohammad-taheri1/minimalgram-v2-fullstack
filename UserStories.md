@@ -1,4 +1,4 @@
-# User Stories for techNotes
+# User Stories for MINIMALGRAM V2
 
 -  [ ] As a guest, I can see the first page with all posts
 -  [ ] As a guest, I can searh for a category and see it's posts
