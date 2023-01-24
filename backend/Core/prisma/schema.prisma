@@ -71,6 +71,7 @@ datasource db {
  }
 
 enum UserType {
+    MANAGER
     ADMIN
     USER
 }
