@@ -57,7 +57,7 @@ The backend of this project is consisted of micro-services.
 * brach `main` is locked. so it only accepts pull request
 * Guset can see public posts withouth any authentication
 * Guest can see user profile with user's posts and public informations
-* UserType can be ADMIN or USER
+* UserType can be MANAGER or ADMIN or USER
 * Guest can signup
 * User can login and logout
 * User can see him/her profile with it's private informations
@@ -65,3 +65,4 @@ The backend of this project is consisted of micro-services.
 * User can edit and delete only his/her posts (check by userID)
 * Admin can create categories
 * Admin can switch user isActive field between true and false in any time
+* Manager can switch a user between admin and user at any time
