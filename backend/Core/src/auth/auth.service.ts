@@ -1,7 +1,7 @@
-import { ConflictException, HttpException, Injectable } from "@nestjs/common";
-import { ILoginParams, ISignupParams } from "./auth.dto";
-import { PrismaService } from "../prisma/prisma.service";
-import { UserType } from "@prisma/client";
+import {ConflictException, HttpException, Injectable, NotFoundException} from "@nestjs/common";
+import {ILoginParams, ISignupParams, UserInfo} from "./auth.dto";
+import {PrismaService} from "../prisma/prisma.service";
+import {UserType} from "@prisma/client";
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
 
@@ -12,7 +12,7 @@ export class AuthService {
   }
 
   async signup(body: ISignupParams) {
-    const { email, password } = body;
+    const {email, password} = body;
 
     const userExists = await this.prismaService.user.findUnique({
       where: {
@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   async login(body: ILoginParams) {
-    const { email, password } = body;
+    const {email, password} = body;
     const user = await this.prismaService.user.findUnique({
       where: {
         email
@@ -62,4 +62,33 @@ export class AuthService {
     });
   }
 
+  async profile(email: string, user: UserInfo) {
+    const queryResult = await this.prismaService.user.findUnique({
+      where: {
+        email: email
+      },
+      include: {
+        posts: true
+      }
+    })
+
+    if (!queryResult) {
+      throw new NotFoundException();
+    }
+
+    return ({
+      requested_email: email,
+      user_In_DB: queryResult,
+      user_JWT_DATA: user
+    })
+  }
+
+  // temp
+  async getAllUsersTemporaryImplemented() {
+    return await this.prismaService.user.findMany({
+      orderBy: [
+        { created_at: "asc" }
+      ]
+    });
+  }
 }

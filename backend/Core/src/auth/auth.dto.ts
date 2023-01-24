@@ -41,3 +41,10 @@ export interface ILoginParams {
   email: string,
   password: string
 }
+
+export interface UserInfo {
+  name: string;
+  id: number;
+  iat: number;
+  exp: number;
+}
